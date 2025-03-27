@@ -47,7 +47,8 @@ async function getEmployees(req, res) {
 
 //create employee
 async function createEmployee(req, res) {
-  const transaction = await connectToDatabase().transaction();
+  const { sequelize } = await connectToDatabase();
+  const transaction = sequelize.transaction();
   try {
     const { EMSemployee, EMSdesignation, EMSdepartment } =
       await connectToDatabase();
